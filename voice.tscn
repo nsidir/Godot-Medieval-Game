@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://cseu4aeap2kr5"]
+
+[ext_resource type="Script" uid="uid://bfplxew4lk8su" path="res://voice.gd" id="1_p8aoh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p8aoh"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_p8aoh"]
+material = SubResource("StandardMaterial3D_p8aoh")
+
+[node name="Node" type="Node3D"]
+script = ExtResource("1_p8aoh")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.0371552, 0.931885, -0.027533, -0.999289, 0.034814, 0.005452, 0.00647366, 0.0254778, 0.999606, 0, 0, 0)
+mesh = SubResource("PlaneMesh_p8aoh")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="SubViewport"]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="LineEdit" type="LineEdit" parent="SubViewport/CanvasLayer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="SubViewport/CanvasLayer/VBoxContainer"]
+layout_mode = 2
