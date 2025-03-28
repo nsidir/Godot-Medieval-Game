@@ -3,7 +3,7 @@ extends CharacterBody3D
 # Movement settings
 @export var speed = 14
 @export var fall_acceleration = 75
-@export var jump_velocity = 20.0
+@export var jump_velocity = 30.0
 
 var target_velocity = Vector3.ZERO
 var mouse_sens = 0.3
@@ -53,7 +53,7 @@ func _physics_process(delta):
 			$Pivot/AnimationPlayer.play("mixamo_com", -1, 1)
 		if Input.is_action_just_pressed("jump"):
 			target_velocity.y = jump_velocity
-			$Pivot/AnimationPlayer.play("Backflip/mixamo_com", -1, 3)
+			$Pivot/AnimationPlayer.play("Backflip/mixamo_com", -1, 1)
 		else:
 			target_velocity.y = 0
 	else:
