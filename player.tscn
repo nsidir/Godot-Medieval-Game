@@ -852,7 +852,7 @@ _data = {
 script = ExtResource("1_4flbx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.634246, 0.974286, 0.0272322)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0258845, 0.974286, 0.0272322)
 shape = SubResource("CapsuleShape3D_sh265")
 
 [node name="Pivot" type="Node3D" parent="."]
