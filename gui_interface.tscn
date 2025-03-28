@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://vwtkmdikxg17"]
 
-[ext_resource type="FontFile" uid="uid://ckcmbfi6do0yb" path="res://Comic Sans MS.ttf" id="1_q8wdx"]
+[ext_resource type="FontFile" uid="uid://dg7dv80ngkrg4" path="res://DoDavidGothicRegular.ttf" id="1_q8wdx"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cetds"]
 font = ExtResource("1_q8wdx")
