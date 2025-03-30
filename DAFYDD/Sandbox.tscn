@@ -1,0 +1,726 @@
+[gd_scene load_steps=30 format=3 uid="uid://dp5v5vynktsnd"]
+
+[ext_resource type="Texture2D" uid="uid://b7t0fjt5lyhi3" path="res://DAFYDD/bot.png" id="1_s6cbj"]
+[ext_resource type="Script" uid="uid://cmptwka05g7kr" path="res://DAFYDD/camera_pivot.gd" id="2_ameyp"]
+[ext_resource type="PackedScene" uid="uid://dl40b7t6xs62l" path="res://player.tscn" id="2_ia3p6"]
+[ext_resource type="Shape3D" uid="uid://v82lylwgd2n7" path="res://DAFYDD/TestBoxCollisionShape.tres" id="3_nv2rb"]
+[ext_resource type="Texture2D" uid="uid://c3hkqbllmiu6n" path="res://DAFYDD/acs.PNG" id="4_py4ex"]
+[ext_resource type="PackedScene" uid="uid://0q7jj2h2vya8" path="res://DAFYDD/assets/NPC.tscn" id="6_bsuh8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s6cbj"]
+size = Vector3(50, 1, 50)
+
+[sub_resource type="BoxMesh" id="BoxMesh_s6cbj"]
+size = Vector3(50, 1, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ia3p6"]
+albedo_texture = ExtResource("1_s6cbj")
+uv1_triplanar_sharpness = 0.34151
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nv2rb"]
+size = Vector2(50, 50)
+center_offset = Vector3(0, 0.5, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_py4ex"]
+albedo_texture = ExtResource("1_s6cbj")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ia3p6"]
+size = Vector3(50, 6, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_bsuh8"]
+size = Vector3(50, 6, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nv2rb"]
+size = Vector3(50, 6, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_py4ex"]
+size = Vector3(50, 6, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ameyp"]
+size = Vector3(50, 6, 1)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_nv2rb"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ameyp"]
+albedo_color = Color(1, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1nqq2"]
+material = SubResource("StandardMaterial3D_ameyp")
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_py4ex"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_io30f"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_gqbej"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_300di"]
+size = Vector3(3, 3, 3)
+
+[sub_resource type="BoxMesh" id="BoxMesh_66ppt"]
+size = Vector3(3, 3, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bsuh8"]
+albedo_texture = ExtResource("4_py4ex")
+
+[sub_resource type="SphereMesh" id="SphereMesh_ia3p6"]
+material = SubResource("StandardMaterial3D_bsuh8")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_nv2rb"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ia3p6"]
+points = PackedVector3Array(0, 0, 0, 3, 0, 0, 3, 2, 0, 3, 0, 2, 0, 0, 2, 3, 2, 2)
+
+[sub_resource type="PrismMesh" id="PrismMesh_nv2rb"]
+left_to_right = 1.0
+size = Vector3(3, 2, 2)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.747711, -0.368347, 0.552493, -0.657389, -0.293297, 0.69413, -0.0936361, -0.882212, -0.461449, -5.83012, 23.165, 2.23752)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("2_ia3p6")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.35782, 3.22594, 12.4953)
+collision_mask = 5
+
+[node name="CameraPivot" type="Marker3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+script = ExtResource("2_ameyp")
+
+[node name="Camera3D" type="Camera3D" parent="Player/CameraPivot"]
+transform = Transform3D(-1, 5.11976e-08, -1.42051e-07, 0, 0.940762, 0.339066, 1.50996e-07, 0.339066, -0.940762, -0.600624, 2.29773, -1.74174)
+current = true
+
+[node name="Enemy" parent="." instance=ExtResource("6_bsuh8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 4, 0)
+
+[node name="Floor" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_s6cbj")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+visible = false
+mesh = SubResource("BoxMesh_s6cbj")
+surface_material_override/0 = SubResource("StandardMaterial3D_ia3p6")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("PlaneMesh_nv2rb")
+surface_material_override/0 = SubResource("StandardMaterial3D_py4ex")
+
+[node name="wall" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 25.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall"]
+shape = SubResource("BoxShape3D_ia3p6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall"]
+mesh = SubResource("BoxMesh_bsuh8")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="wall2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, -25.5)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall2"]
+shape = SubResource("BoxShape3D_nv2rb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall2"]
+mesh = SubResource("BoxMesh_bsuh8")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="wall3" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 25.5, 3.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall3"]
+shape = SubResource("BoxShape3D_py4ex")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall3"]
+mesh = SubResource("BoxMesh_bsuh8")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="wall4" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.5, 3.5, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="wall4"]
+shape = SubResource("BoxShape3D_ameyp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="wall4"]
+mesh = SubResource("BoxMesh_bsuh8")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Testbox" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.74649, 0)
+collision_layer = 4
+physics_material_override = SubResource("PhysicsMaterial_nv2rb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testbox"]
+shape = ExtResource("3_nv2rb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testbox"]
+mesh = SubResource("BoxMesh_1nqq2")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Testbox2" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.2037, 2.17316, 0)
+collision_layer = 4
+collision_mask = 7
+mass = 2.0
+physics_material_override = SubResource("PhysicsMaterial_py4ex")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testbox2"]
+shape = SubResource("BoxShape3D_io30f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testbox2"]
+mesh = SubResource("BoxMesh_gqbej")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Testbox3" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.9255, 2.53749, 4.93999)
+collision_layer = 4
+collision_mask = 7
+mass = 8.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testbox3"]
+shape = SubResource("BoxShape3D_300di")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testbox3"]
+mesh = SubResource("BoxMesh_66ppt")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Testsphere" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.17542, 4.28726, 5.24501)
+collision_layer = 4
+collision_mask = 7
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testsphere"]
+mesh = SubResource("SphereMesh_ia3p6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testsphere"]
+shape = SubResource("SphereShape3D_nv2rb")
+
+[node name="TestWedge" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.05238, 1.92747, 5.98893)
+collision_layer = 4
+collision_mask = 7
+mass = 5.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestWedge"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -1, -1)
+shape = SubResource("ConvexPolygonShape3D_ia3p6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestWedge"]
+mesh = SubResource("PrismMesh_nv2rb")
+
+[node name="Testbox4" type="RigidBody3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -1.61402, 1.74649, -13.8041)
+collision_layer = 4
+physics_material_override = SubResource("PhysicsMaterial_nv2rb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testbox4"]
+shape = ExtResource("3_nv2rb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testbox4"]
+mesh = SubResource("BoxMesh_1nqq2")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Testbox5" type="RigidBody3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -8.82912, 2.17316, -6.58897)
+collision_layer = 4
+collision_mask = 7
+mass = 2.0
+physics_material_override = SubResource("PhysicsMaterial_py4ex")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testbox5"]
+shape = SubResource("BoxShape3D_io30f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testbox5"]
+mesh = SubResource("BoxMesh_gqbej")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Testbox6" type="RigidBody3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 13.1401, 2.53749, -21.572)
+collision_layer = 4
+collision_mask = 7
+mass = 8.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testbox6"]
+shape = SubResource("BoxShape3D_300di")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testbox6"]
+mesh = SubResource("BoxMesh_66ppt")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Testsphere2" type="RigidBody3D" parent="."]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, -0.150595, 4.28726, -7.84994)
+collision_layer = 4
+collision_mask = 7
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testsphere2"]
+mesh = SubResource("SphereMesh_ia3p6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testsphere2"]
+shape = SubResource("SphereShape3D_nv2rb")
+
+[node name="Testbox7" type="RigidBody3D" parent="."]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -11.4766, 1.74649, 0.721818)
+collision_layer = 4
+physics_material_override = SubResource("PhysicsMaterial_nv2rb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testbox7"]
+shape = ExtResource("3_nv2rb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testbox7"]
+mesh = SubResource("BoxMesh_1nqq2")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Testbox8" type="RigidBody3D" parent="."]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -16.5784, 2.17316, -8.11485)
+collision_layer = 4
+collision_mask = 7
+mass = 2.0
+physics_material_override = SubResource("PhysicsMaterial_py4ex")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testbox8"]
+shape = SubResource("BoxShape3D_io30f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testbox8"]
+mesh = SubResource("BoxMesh_gqbej")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Testbox9" type="RigidBody3D" parent="."]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -7.79199, 2.53749, 16.9837)
+collision_layer = 4
+collision_mask = 7
+mass = 8.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testbox9"]
+shape = SubResource("BoxShape3D_300di")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testbox9"]
+mesh = SubResource("BoxMesh_66ppt")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Testsphere3" type="RigidBody3D" parent="."]
+transform = Transform3D(0.5, 0, -0.866025, 0, 1, 0, 0.866025, 0, 0.5, -17.6066, 4.28726, 0.594328)
+collision_layer = 4
+collision_mask = 7
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testsphere3"]
+mesh = SubResource("SphereMesh_ia3p6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testsphere3"]
+shape = SubResource("SphereShape3D_nv2rb")
+
+[node name="Testsphere4" type="RigidBody3D" parent="."]
+transform = Transform3D(0.761357, 0, -0.648333, 0, 1, 0, 0.648333, 0, 0.761357, -9.0465, 8.156, 11.5621)
+collision_layer = 4
+collision_mask = 7
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testsphere4"]
+mesh = SubResource("SphereMesh_ia3p6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testsphere4"]
+shape = SubResource("SphereShape3D_nv2rb")
+
+[node name="TestWedge2" type="RigidBody3D" parent="."]
+transform = Transform3D(0.761357, 0, -0.648333, 0, 1, 0, 0.648333, 0, 0.761357, -10.1965, 5.79621, 11.5599)
+collision_layer = 4
+collision_mask = 7
+mass = 5.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestWedge2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -1, -1)
+shape = SubResource("ConvexPolygonShape3D_ia3p6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestWedge2"]
+mesh = SubResource("PrismMesh_nv2rb")
+
+[node name="Testbox10" type="RigidBody3D" parent="."]
+transform = Transform3D(0.996801, 0, 0.0799206, 0, 1, 0, -0.0799206, 0, 0.996801, 4.49243, 5.61523, -1.9288)
+collision_layer = 4
+physics_material_override = SubResource("PhysicsMaterial_nv2rb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testbox10"]
+shape = ExtResource("3_nv2rb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testbox10"]
+mesh = SubResource("BoxMesh_1nqq2")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Testbox11" type="RigidBody3D" parent="."]
+transform = Transform3D(0.996801, 0, 0.0799206, 0, 1, 0, -0.0799206, 0, 0.996801, -5.67863, 6.0419, -1.11331)
+collision_layer = 4
+collision_mask = 7
+mass = 2.0
+physics_material_override = SubResource("PhysicsMaterial_py4ex")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testbox11"]
+shape = SubResource("BoxShape3D_io30f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testbox11"]
+mesh = SubResource("BoxMesh_gqbej")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Testbox12" type="RigidBody3D" parent="."]
+transform = Transform3D(0.996801, 0, 0.0799206, 0, 1, 0, -0.0799206, 0, 0.996801, 20.7618, 6.40623, 1.72261)
+collision_layer = 4
+collision_mask = 7
+mass = 8.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testbox12"]
+shape = SubResource("BoxShape3D_300di")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testbox12"]
+mesh = SubResource("BoxMesh_66ppt")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Testsphere5" type="RigidBody3D" parent="."]
+transform = Transform3D(0.996801, 0, 0.0799206, 0, 1, 0, -0.0799206, 0, 0.996801, 1.74635, 8.156, 3.55321)
+collision_layer = 4
+collision_mask = 7
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testsphere5"]
+mesh = SubResource("SphereMesh_ia3p6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testsphere5"]
+shape = SubResource("SphereShape3D_nv2rb")
+
+[node name="Testbox13" type="RigidBody3D" parent="."]
+transform = Transform3D(-0.180794, 0, -0.983521, 0, 1, 0, 0.983521, 0, -0.180794, -12.4341, 5.61523, 2.73637)
+collision_layer = 4
+physics_material_override = SubResource("PhysicsMaterial_nv2rb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testbox13"]
+shape = ExtResource("3_nv2rb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testbox13"]
+mesh = SubResource("BoxMesh_1nqq2")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Testbox14" type="RigidBody3D" parent="."]
+transform = Transform3D(-0.180794, 0, -0.983521, 0, 1, 0, 0.983521, 0, -0.180794, -10.5894, 6.0419, -7.29918)
+collision_layer = 4
+collision_mask = 7
+mass = 2.0
+physics_material_override = SubResource("PhysicsMaterial_py4ex")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testbox14"]
+shape = SubResource("BoxShape3D_io30f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testbox14"]
+mesh = SubResource("BoxMesh_gqbej")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Testbox15" type="RigidBody3D" parent="."]
+transform = Transform3D(-0.180794, 0, -0.983521, 0, 1, 0, 0.983521, 0, -0.180794, -20.1719, 6.40623, 17.5063)
+collision_layer = 4
+collision_mask = 7
+mass = 8.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testbox15"]
+shape = SubResource("BoxShape3D_300di")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testbox15"]
+mesh = SubResource("BoxMesh_66ppt")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Testsphere6" type="RigidBody3D" parent="."]
+transform = Transform3D(-0.180794, 0, -0.983521, 0, 1, 0, 0.983521, 0, -0.180794, -17.0186, 8.156, -1.33498)
+collision_layer = 4
+collision_mask = 7
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testsphere6"]
+mesh = SubResource("SphereMesh_ia3p6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testsphere6"]
+shape = SubResource("SphereShape3D_nv2rb")
+
+[node name="Testbox16" type="RigidBody3D" parent="."]
+transform = Transform3D(-0.291136, 0, 0.956682, 0, 1, 0, -0.956682, 0, -0.291136, 1.98108, 11.0961, -3.83994)
+collision_layer = 4
+physics_material_override = SubResource("PhysicsMaterial_nv2rb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testbox16"]
+shape = ExtResource("3_nv2rb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testbox16"]
+mesh = SubResource("BoxMesh_1nqq2")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Testbox17" type="RigidBody3D" parent="."]
+transform = Transform3D(-0.291136, 0, 0.956682, 0, 1, 0, -0.956682, 0, -0.291136, 4.95175, 11.5228, 5.92175)
+collision_layer = 4
+collision_mask = 7
+mass = 2.0
+physics_material_override = SubResource("PhysicsMaterial_py4ex")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testbox17"]
+shape = SubResource("BoxShape3D_io30f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testbox17"]
+mesh = SubResource("BoxMesh_gqbej")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Testbox18" type="RigidBody3D" parent="."]
+transform = Transform3D(-0.291136, 0, 0.956682, 0, 1, 0, -0.956682, 0, -0.291136, 2.07059, 11.8871, -20.5138)
+collision_layer = 4
+collision_mask = 7
+mass = 8.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testbox18"]
+shape = SubResource("BoxShape3D_300di")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testbox18"]
+mesh = SubResource("BoxMesh_66ppt")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Testsphere7" type="RigidBody3D" parent="."]
+transform = Transform3D(-0.291136, 0, 0.956682, 0, 1, 0, -0.956682, 0, -0.291136, 7.92337, 13.6369, -2.32909)
+collision_layer = 4
+collision_mask = 7
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testsphere7"]
+mesh = SubResource("SphereMesh_ia3p6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testsphere7"]
+shape = SubResource("SphereShape3D_nv2rb")
+
+[node name="TestWedge3" type="RigidBody3D" parent="."]
+transform = Transform3D(-0.291136, 0, 0.956682, 0, 1, 0, -0.956682, 0, -0.291136, 8.89038, 11.2771, -1.7067)
+collision_layer = 4
+collision_mask = 7
+mass = 5.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestWedge3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -1, -1)
+shape = SubResource("ConvexPolygonShape3D_ia3p6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestWedge3"]
+mesh = SubResource("PrismMesh_nv2rb")
+
+[node name="Testbox19" type="RigidBody3D" parent="."]
+transform = Transform3D(-0.88234, 0, 0.470612, 0, 1, 0, -0.470612, 0, -0.88234, -10.7551, 11.0961, 1.72302)
+collision_layer = 4
+physics_material_override = SubResource("PhysicsMaterial_nv2rb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testbox19"]
+shape = ExtResource("3_nv2rb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testbox19"]
+mesh = SubResource("BoxMesh_1nqq2")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Testbox20" type="RigidBody3D" parent="."]
+transform = Transform3D(-0.88234, 0, 0.470612, 0, 1, 0, -0.470612, 0, -0.88234, -1.75199, 11.5228, 6.52501)
+collision_layer = 4
+collision_mask = 7
+mass = 2.0
+physics_material_override = SubResource("PhysicsMaterial_py4ex")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testbox20"]
+shape = SubResource("BoxShape3D_io30f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testbox20"]
+mesh = SubResource("BoxMesh_gqbej")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Testbox21" type="RigidBody3D" parent="."]
+transform = Transform3D(-0.88234, 0, 0.470612, 0, 1, 0, -0.470612, 0, -0.88234, -22.482, 11.8871, -10.1305)
+collision_layer = 4
+collision_mask = 7
+mass = 8.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testbox21"]
+shape = SubResource("BoxShape3D_300di")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testbox21"]
+mesh = SubResource("BoxMesh_66ppt")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Testsphere8" type="RigidBody3D" parent="."]
+transform = Transform3D(-0.88234, 0, 0.470612, 0, 1, 0, -0.470612, 0, -0.88234, -5.48496, 13.6369, -1.41047)
+collision_layer = 4
+collision_mask = 7
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testsphere8"]
+mesh = SubResource("SphereMesh_ia3p6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testsphere8"]
+shape = SubResource("SphereShape3D_nv2rb")
+
+[node name="Testbox22" type="RigidBody3D" parent="."]
+transform = Transform3D(0.682943, 0, 0.730472, 0, 1, 0, -0.730472, 0, 0.682943, 6.01288, 11.0961, 6.92935)
+collision_layer = 4
+physics_material_override = SubResource("PhysicsMaterial_nv2rb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testbox22"]
+shape = ExtResource("3_nv2rb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testbox22"]
+mesh = SubResource("BoxMesh_1nqq2")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Testbox23" type="RigidBody3D" parent="."]
+transform = Transform3D(0.682943, 0, 0.730472, 0, 1, 0, -0.730472, 0, 0.682943, -0.955657, 11.5228, 14.3829)
+collision_layer = 4
+collision_mask = 7
+mass = 2.0
+physics_material_override = SubResource("PhysicsMaterial_py4ex")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testbox23"]
+shape = SubResource("BoxShape3D_io30f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testbox23"]
+mesh = SubResource("BoxMesh_gqbej")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Testbox24" type="RigidBody3D" parent="."]
+transform = Transform3D(0.682943, 0, 0.730472, 0, 1, 0, -0.730472, 0, 0.682943, 20.4976, 11.8871, -1.33006)
+collision_layer = 4
+collision_mask = 7
+mass = 8.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testbox24"]
+shape = SubResource("BoxShape3D_300di")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testbox24"]
+mesh = SubResource("BoxMesh_66ppt")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Testsphere9" type="RigidBody3D" parent="."]
+transform = Transform3D(0.682943, 0, 0.730472, 0, 1, 0, -0.730472, 0, 0.682943, 7.67559, 13.6369, 12.8309)
+collision_layer = 4
+collision_mask = 7
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testsphere9"]
+mesh = SubResource("SphereMesh_ia3p6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testsphere9"]
+shape = SubResource("SphereShape3D_nv2rb")
+
+[node name="Testsphere10" type="RigidBody3D" parent="."]
+transform = Transform3D(0.398589, 0, 0.91713, 0, 1, 0, -0.91713, 0, 0.398589, 15.6761, 17.5057, 1.44854)
+collision_layer = 4
+collision_mask = 7
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testsphere10"]
+mesh = SubResource("SphereMesh_ia3p6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testsphere10"]
+shape = SubResource("SphereShape3D_nv2rb")
+
+[node name="TestWedge4" type="RigidBody3D" parent="."]
+transform = Transform3D(0.398589, 0, 0.91713, 0, 1, 0, -0.91713, 0, 0.398589, 16.0088, 15.1459, 2.54935)
+collision_layer = 4
+collision_mask = 7
+mass = 5.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestWedge4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -1, -1)
+shape = SubResource("ConvexPolygonShape3D_ia3p6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestWedge4"]
+mesh = SubResource("PrismMesh_nv2rb")
+
+[node name="Testbox25" type="RigidBody3D" parent="."]
+transform = Transform3D(-0.366664, 0, 0.930354, 0, 1, 0, -0.930354, 0, -0.366664, -1.17207, 14.9649, -7.57623)
+collision_layer = 4
+physics_material_override = SubResource("PhysicsMaterial_nv2rb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testbox25"]
+shape = ExtResource("3_nv2rb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testbox25"]
+mesh = SubResource("BoxMesh_1nqq2")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Testbox26" type="RigidBody3D" parent="."]
+transform = Transform3D(-0.366664, 0, 0.930354, 0, 1, 0, -0.930354, 0, -0.366664, 2.56925, 15.3916, 1.91682)
+collision_layer = 4
+collision_mask = 7
+mass = 2.0
+physics_material_override = SubResource("PhysicsMaterial_py4ex")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testbox26"]
+shape = SubResource("BoxShape3D_io30f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testbox26"]
+mesh = SubResource("BoxMesh_gqbej")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Testbox27" type="RigidBody3D" parent="."]
+transform = Transform3D(-0.366664, 0, 0.930354, 0, 1, 0, -0.930354, 0, -0.366664, -2.41544, 15.7559, -24.2039)
+collision_layer = 4
+collision_mask = 7
+mass = 8.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testbox27"]
+shape = SubResource("BoxShape3D_300di")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testbox27"]
+mesh = SubResource("BoxMesh_66ppt")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Testsphere11" type="RigidBody3D" parent="."]
+transform = Transform3D(-0.366664, 0, 0.930354, 0, 1, 0, -0.930354, 0, -0.366664, 4.87195, 17.5057, -6.54512)
+collision_layer = 4
+collision_mask = 7
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testsphere11"]
+mesh = SubResource("SphereMesh_ia3p6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testsphere11"]
+shape = SubResource("SphereShape3D_nv2rb")
+
+[node name="Testbox28" type="RigidBody3D" parent="."]
+transform = Transform3D(0.993552, 0, 0.113377, 0, 1, 0, -0.113377, 0, 0.993552, 8.21894, 14.9649, 7.25889)
+collision_layer = 4
+physics_material_override = SubResource("PhysicsMaterial_nv2rb")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testbox28"]
+shape = ExtResource("3_nv2rb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testbox28"]
+mesh = SubResource("BoxMesh_1nqq2")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Testbox29" type="RigidBody3D" parent="."]
+transform = Transform3D(0.993552, 0, 0.113377, 0, 1, 0, -0.113377, 0, 0.993552, -1.91896, 15.3916, 8.41575)
+collision_layer = 4
+collision_mask = 7
+mass = 2.0
+physics_material_override = SubResource("PhysicsMaterial_py4ex")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testbox29"]
+shape = SubResource("BoxShape3D_io30f")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testbox29"]
+mesh = SubResource("BoxMesh_gqbej")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Testbox30" type="RigidBody3D" parent="."]
+transform = Transform3D(0.993552, 0, 0.113377, 0, 1, 0, -0.113377, 0, 0.993552, 24.6018, 15.7559, 10.3615)
+collision_layer = 4
+collision_mask = 7
+mass = 8.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testbox30"]
+shape = SubResource("BoxShape3D_300di")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testbox30"]
+mesh = SubResource("BoxMesh_66ppt")
+skeleton = NodePath("../CollisionShape3D")
+
+[node name="Testsphere12" type="RigidBody3D" parent="."]
+transform = Transform3D(0.993552, 0, 0.113377, 0, 1, 0, -0.113377, 0, 0.993552, 5.65866, 17.5057, 12.8301)
+collision_layer = 4
+collision_mask = 7
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Testsphere12"]
+mesh = SubResource("SphereMesh_ia3p6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Testsphere12"]
+shape = SubResource("SphereShape3D_nv2rb")

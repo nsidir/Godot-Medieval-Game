@@ -1,13 +1,16 @@
 extends CharacterBody3D
 
 # Movement settings
-@export var speed = 14
+@export var speed = 12
+@export var sprint_speed = 20
 @export var fall_acceleration = 75
 @export var jump_velocity = 30.0
+@export var double_jump_velocity = 20.0
 
 var target_velocity = Vector3.ZERO
-var mouse_sens = 0.3
+var mouse_sensX = 0.3
 var rotationPlayer = 0
+var jumpedOnce = false
 
 func _ready():
 	# Capture and hide mouse cursor
@@ -19,7 +22,7 @@ func _input(event):
 		get_tree().quit()
 		
 	if event is InputEventMouseMotion:
-		rotationPlayer = deg_to_rad(-event.relative.x * mouse_sens)
+		rotationPlayer = deg_to_rad(-event.relative.x * mouse_sensX)
 		rotate_y(rotationPlayer)
 
 func _physics_process(delta):
@@ -31,6 +34,7 @@ func _physics_process(delta):
 	if Input.is_action_pressed("move_left"):  direction.x -= 1
 	if Input.is_action_pressed("move_back"):  direction.z += 1
 	if Input.is_action_pressed("move_forward"): direction.z -= 1
+	
 
 	# Movement processing
 	if direction != Vector3.ZERO:
@@ -44,22 +48,44 @@ func _physics_process(delta):
 	# Velocity calculations
 	target_velocity.x = -direction.x * speed
 	target_velocity.z = -direction.z * speed
+	if Input.is_action_pressed("Sprint"): 
+		target_velocity.x = -direction.x * sprint_speed
+		target_velocity.z = -direction.z * sprint_speed
 
 	# Jump and gravity and animations
 	if is_on_floor():
+		jumpedOnce = false
 		if is_moving:
-			$Pivot/AnimationPlayer.play("Running/mixamo_com", -1, 10)
+			if Input.is_action_pressed("Sprint"): 
+				$Pivot/AnimationPlayer.play("Fast Run/mixamo_com", -1, 1)
+			else:
+				$Pivot/AnimationPlayer.play("Running/mixamo_com", -1, 10)
 		else:
-			$Pivot/AnimationPlayer.play("mixamo_com", -1, 1)
+			$Pivot/AnimationPlayer.play("Capoeira/mixamo_com", -1, 1)
 		if Input.is_action_just_pressed("jump"):
 			target_velocity.y = jump_velocity
-			$Pivot/AnimationPlayer.play("Backflip/mixamo_com", -1, 1)
+			$Pivot/AnimationPlayer.play("Backflip2/mixamo_com", -1, 1.5)
 		else:
 			target_velocity.y = 0
 	else:
-		target_velocity.y -= fall_acceleration * delta
-
-	# Apply movement
+		if Input.is_action_just_pressed("jump") && jumpedOnce == false: 
+			target_velocity.y = double_jump_velocity
+			$Pivot/AnimationPlayer.play("Front Twist Flip/mixamo_com", -1, 1)
+			jumpedOnce = true
+		else:
+			target_velocity.y -= fall_acceleration * delta
+	
+	if is_on_floor():
+		for i in get_slide_collision_count():
+			checkForCollision(get_slide_collision(i))
+	
+		# Apply movement
 	velocity = target_velocity
 	move_and_slide()
-	
+
+func checkForCollision(kinematicCollision):
+	var colObj = kinematicCollision.get_collider()
+	var collisionLayerEnabled = colObj.get_collision_layer_value(3);
+	if collisionLayerEnabled == true:
+		var push_direction = (colObj.global_transform.origin - global_transform.origin).normalized()
+		colObj.apply_impulse(push_direction * 1, Vector3.ZERO )
