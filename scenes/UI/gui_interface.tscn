@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://vwtkmdikxg17"]
+
+[ext_resource type="FontFile" uid="uid://dn5wjhqvychwu" path="res://misc/OldLondon.ttf" id="1_q8wdx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cetds"]
+font = ExtResource("1_q8wdx")
+font_size = 100
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 512.0
+offset_top = 256.0
+offset_right = 512.0
+offset_bottom = 256.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 25.6
+anchor_bottom = 12.8
+grow_horizontal = 2
+grow_vertical = 2
+text = "Nice guy
+town
+(i frigging love being nice)"
+label_settings = SubResource("LabelSettings_cetds")
+horizontal_alignment = 1
+vertical_alignment = 1

@@ -1,0 +1,56 @@
+[gd_scene load_steps=11 format=3 uid="uid://d3bvmds31ninx"]
+
+[ext_resource type="Texture2D" uid="uid://dy6ghdbae66hu" path="res://textures/rock_face_diff_1k.jpg" id="1_ubwgw"]
+[ext_resource type="Texture2D" uid="uid://dnfxmgte10ide" path="res://textures/rock_face_ao_1k.jpg" id="2_vkq25"]
+[ext_resource type="Texture2D" uid="uid://bho5vv01rdebi" path="res://textures/rock_face_disp_1k.png" id="3_7lrji"]
+[ext_resource type="Texture2D" uid="uid://bk22grfnx0po6" path="res://textures/rock_face_arm_1k.jpg" id="4_rssyh"]
+[ext_resource type="PackedScene" uid="uid://cbaq8mrtcr8mk" path="res://assets/monastero_6.tscn" id="5_hwp66"]
+[ext_resource type="PackedScene" uid="uid://da82iu8n7bl4" path="res://scenes/UI/gui.tscn" id="6_2xkjh"]
+[ext_resource type="PackedScene" uid="uid://c76wowq8dj0oe" path="res://scenes/characters/player_with_camera.tscn" id="7_dj21o"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7dm0k"]
+margin = 0.0
+size = Vector3(60, 2, 60)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ig7tw"]
+size = Vector3(60, 2, 60)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kek77"]
+albedo_texture = ExtResource("1_ubwgw")
+metallic = 1.0
+metallic_texture = ExtResource("4_rssyh")
+roughness = 0.77
+roughness_texture = ExtResource("4_rssyh")
+ao_enabled = true
+ao_texture = ExtResource("2_vkq25")
+heightmap_enabled = true
+heightmap_scale = 3.545
+heightmap_deep_parallax = true
+heightmap_min_layers = 7
+heightmap_max_layers = 32
+heightmap_texture = ExtResource("3_7lrji")
+
+[node name="Main" type="Node3D"]
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -33.6478)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_7dm0k")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("BoxMesh_ig7tw")
+surface_material_override/0 = SubResource("StandardMaterial3D_kek77")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.747711, -0.368347, 0.552493, -0.657389, -0.293297, 0.69413, -0.0936361, -0.882212, -0.461449, -5.83012, 23.165, 2.23752)
+shadow_enabled = true
+
+[node name="Monastero6" parent="." instance=ExtResource("5_hwp66")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, -41.2373)
+
+[node name="GUI" parent="." instance=ExtResource("6_2xkjh")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -20, 5, -24)
+
+[node name="Player_with_camera" parent="." instance=ExtResource("7_dj21o")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -24, 2, -7)

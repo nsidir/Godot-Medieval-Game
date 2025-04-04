@@ -1,0 +1,99 @@
+Things to make
+
+General
+
+  - Highlighted items
+  - Room naming / popup system for every area
+  - Better collisions
+  - Define parameters for controls settings 
+	- mouse sensitivity
+	- scroll sensitivity
+
+Enviroment
+
+  - Terrain
+	- Hills
+	- Trees
+	- Stones
+
+  - Castle
+
+	- Exterior
+	  - Wall
+	  - Flags / Banners
+	  - Wooden parts
+
+	- Interior
+	  - Walls/Floors/Ceilings
+	  - Tables/Chairs/Misc big items
+	  - Small items - plates/books/
+	  - Wall items - swords/shields
+	  - Chandelieauirx 
+	  - Carpet
+	  - Armoury
+	  - Guy that lost his clothes / gambler !
+	  - Interior/ fake exterior     
+		- Stables
+		- Blacksmith area
+		- Epic library
+		- 
+
+  - Village
+	- Houses / house interior
+	- Wagons
+	- Wells
+	- Market
+	- Duel area
+	- Jousting area
+
+  - Castle moat
+
+UI
+  - Menus
+  - HUD system
+  - Dialog system
+  - Popup system
+  - Highlight
+  - Button text popup
+
+NPC
+  - Different major types for info (Cook, King, peasant, knight)
+  - Voice acting
+  - minor characters (walking around, infinite animations)
+
+Notes / inventory
+  - Areas
+  - General info
+  - Significant items
+  - Npc info
+  - personal notes/diary (automated logging system / unlock)
+  - money
+
+Shop
+  - physical space in village? OR Purchasing system in every area (market, blacksmith shop, woodworker)
+  - Cool items
+  - basic money system (collect money, pay)
+
+Map
+  - Based on solid image?
+  - OR alternative camera view from top down
+
+IMPORTANT SECTION !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  - Triple jump with horse
+  - breakdancing butter dog
+
+
+
+
+FILE SYSTEM
+
+Folder names in ALL OUR PROJECTS:
+
+ - scenes
+ - assets/models (from blender or other etc etc) "assets" FOR NOW
+ - animations
+ - textures (image files)
+ - material (material files)
+ - scripts
+ - misc folder
+ - personal folder ONLY FOR TEMPORARY SCENES/ TESTS AND dedicated files ("NIKOS")

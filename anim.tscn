@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cok1bxgdgae30"]
 
-[ext_resource type="PackedScene" uid="uid://7r5u7y0uykb" path="res://Capoeira.fbx" id="1_vmnuw"]
+[ext_resource type="PackedScene" uid="uid://7r5u7y0uykb" path="res://animations/Capoeira.fbx" id="1_vmnuw"]
 
 [node name="Capoeira" instance=ExtResource("1_vmnuw")]
 

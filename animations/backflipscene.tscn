@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://jxfmdfhimtmr"]
+
+[ext_resource type="PackedScene" uid="uid://cg053mifwvc3c" path="res://animations/Backflip.fbx" id="1_lasep"]
+
+[node name="Backflip" instance=ExtResource("1_lasep")]

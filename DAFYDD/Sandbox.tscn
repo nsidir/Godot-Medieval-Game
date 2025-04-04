@@ -1,11 +1,11 @@
 [gd_scene load_steps=30 format=3 uid="uid://dp5v5vynktsnd"]
 
+[ext_resource type="Script" uid="uid://cwvfm7f7e6rm0" path="res://DAFYDD/sandbox.gd" id="1_1nqq2"]
 [ext_resource type="Texture2D" uid="uid://b7t0fjt5lyhi3" path="res://DAFYDD/bot.png" id="1_s6cbj"]
-[ext_resource type="Script" uid="uid://cmptwka05g7kr" path="res://DAFYDD/camera_pivot.gd" id="2_ameyp"]
-[ext_resource type="PackedScene" uid="uid://dl40b7t6xs62l" path="res://player.tscn" id="2_ia3p6"]
+[ext_resource type="PackedScene" uid="uid://c76wowq8dj0oe" path="res://scenes/characters/player_with_camera.tscn" id="2_bsuh8"]
 [ext_resource type="Shape3D" uid="uid://v82lylwgd2n7" path="res://DAFYDD/TestBoxCollisionShape.tres" id="3_nv2rb"]
 [ext_resource type="Texture2D" uid="uid://c3hkqbllmiu6n" path="res://DAFYDD/acs.PNG" id="4_py4ex"]
-[ext_resource type="PackedScene" uid="uid://0q7jj2h2vya8" path="res://DAFYDD/assets/NPC.tscn" id="6_bsuh8"]
+[ext_resource type="PackedScene" uid="uid://0q7jj2h2vya8" path="res://scenes/characters/NPC.tscn" id="6_bsuh8"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s6cbj"]
 size = Vector3(50, 1, 50)
@@ -23,6 +23,8 @@ center_offset = Vector3(0, 0.5, 0)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_py4ex"]
 albedo_texture = ExtResource("1_s6cbj")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+uv1_triplanar = true
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ia3p6"]
 size = Vector3(50, 6, 1)
@@ -77,22 +79,16 @@ left_to_right = 1.0
 size = Vector3(3, 2, 2)
 
 [node name="Node3D" type="Node3D"]
+script = ExtResource("1_1nqq2")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.747711, -0.368347, 0.552493, -0.657389, -0.293297, 0.69413, -0.0936361, -0.882212, -0.461449, -5.83012, 23.165, 2.23752)
+transform = Transform3D(0.747711, -0.368347, 0.552493, -0.657389, -0.293297, 0.69413, -0.0936361, -0.882212, -0.461449, -1.79307, 25.8998, -2.26468)
 shadow_enabled = true
 
-[node name="Player" parent="." instance=ExtResource("2_ia3p6")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.35782, 3.22594, 12.4953)
+[node name="Player_with_camera" parent="." instance=ExtResource("2_bsuh8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.27649, -4.35026)
 collision_mask = 5
-
-[node name="CameraPivot" type="Marker3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-script = ExtResource("2_ameyp")
-
-[node name="Camera3D" type="Camera3D" parent="Player/CameraPivot"]
-transform = Transform3D(-1, 5.11976e-08, -1.42051e-07, 0, 0.940762, 0.339066, 1.50996e-07, 0.339066, -0.940762, -0.600624, 2.29773, -1.74174)
-current = true
+jump_velocity = 25.0
 
 [node name="Enemy" parent="." instance=ExtResource("6_bsuh8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 4, 0)
@@ -716,6 +712,7 @@ skeleton = NodePath("../CollisionShape3D")
 
 [node name="Testsphere12" type="RigidBody3D" parent="."]
 transform = Transform3D(0.993552, 0, 0.113377, 0, 1, 0, -0.113377, 0, 0.993552, 5.65866, 17.5057, 12.8301)
+visible = false
 collision_layer = 4
 collision_mask = 7
 

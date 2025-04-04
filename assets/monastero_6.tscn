@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://cbaq8mrtcr8mk"]
+
+[ext_resource type="PackedScene" uid="uid://dopr20g1uoq0o" path="res://assets/monastery/source/Monastero6.fbx" id="1_0b0du"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0b0du"]
+size = Vector3(1, 1, 1.84225)
+
+[node name="Monastero6" instance=ExtResource("1_0b0du")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" index="0"]
+transform = Transform3D(40, 0, 0, 0, 5.94161, -6.95866, 0, 0.835039, 49.5134, 2.74617, 4.99349, 6.26326)
+shape = SubResource("BoxShape3D_0b0du")

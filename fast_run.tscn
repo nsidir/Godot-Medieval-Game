@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://lp15lmpcb5s3"]
-
-[ext_resource type="PackedScene" uid="uid://c6dfnbcyg3ppf" path="res://Fast Run.fbx" id="1_w5wrm"]
-
-[node name="Fast Run" instance=ExtResource("1_w5wrm")]
