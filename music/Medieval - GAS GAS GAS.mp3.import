@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cyiuowsjkndnl"
+path="res://.godot/imported/Medieval - GAS GAS GAS.mp3-02b00f043fed6e5418af004d2bfa637c.mp3str"
+
+[deps]
+
+source_file="res://music/Medieval - GAS GAS GAS.mp3"
+dest_files=["res://.godot/imported/Medieval - GAS GAS GAS.mp3-02b00f043fed6e5418af004d2bfa637c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

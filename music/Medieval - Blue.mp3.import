@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://75gnyyejdxmy"
+path="res://.godot/imported/Medieval - Blue.mp3-e876ebb509498963583f8e958662edbc.mp3str"
+
+[deps]
+
+source_file="res://music/Medieval - Blue.mp3"
+dest_files=["res://.godot/imported/Medieval - Blue.mp3-e876ebb509498963583f8e958662edbc.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

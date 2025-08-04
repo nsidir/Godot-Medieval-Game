@@ -4,10 +4,16 @@ General
 
   - Highlighted items
   - Room naming / popup system for every area
-  - Better collisions
+  - Better collisions -------------------------------- basically done
   - Define parameters for controls settings 
 	- mouse sensitivity
 	- scroll sensitivity
+  - Camera:
+	- Add limits to 90 degrees above character and 90 degress below
+	- camera collisions? or cameraobject detection between camera and character (to block camera moving into objects)
+	- roll
+	- estus flask
+	
 
 Enviroment
 

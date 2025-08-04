@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cjeeoj24sbban"
+path="res://.godot/imported/Men Without Hats - The Safety Dance.mp3-0253fdc46763a86c8508e043b7eaae46.mp3str"
+
+[deps]
+
+source_file="res://music/Men Without Hats - The Safety Dance.mp3"
+dest_files=["res://.godot/imported/Men Without Hats - The Safety Dance.mp3-0253fdc46763a86c8508e043b7eaae46.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

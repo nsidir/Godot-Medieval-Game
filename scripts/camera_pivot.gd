@@ -11,12 +11,14 @@ var zoomPosition
 var zoomDirection = Vector3.ZERO
 var target_direction = Vector3.ZERO
 
+var bodyVisible = true
+
 @export var zoomSpeed = 15
 @export var zoom_out_max = -10
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	pass
 
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -37,6 +39,9 @@ func _physics_process(delta):
 				$CameraMover.position.x = -cameraOriginOffsetX
 				$CameraMover.position.y = -cameraOriginOffsetY + 0.6
 				$CameraMover.position.z = -cameraOriginOffsetZ + 0.4
+				if bodyVisible == true:
+					bodyVisible = false
+					
 	else:
 		if Input.is_action_just_pressed("zoom_out"):
 			if zoomPosition > zoom_out_max:

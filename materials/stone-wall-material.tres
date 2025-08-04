@@ -1,0 +1,18 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://b6el8boph8g0w"]
+
+[ext_resource type="Texture2D" uid="uid://hyncvvfwl8fl" path="res://textures/stone-wall/stone_wall_diff_4k.jpg" id="1_6ofwt"]
+[ext_resource type="Texture2D" uid="uid://bw7i3xi3hg6on" path="res://textures/stone-wall/stone_wall_disp_4k.png" id="2_llhrr"]
+[ext_resource type="Texture2D" uid="uid://7x45kbq0brn7" path="res://textures/stone-wall/stone_wall_nor_gl_4k.png" id="3_kfwly"]
+[ext_resource type="Texture2D" uid="uid://dur3lc5f1m8er" path="res://textures/stone-wall/stone_wall_rough_4k.png" id="4_c5k3w"]
+
+[resource]
+albedo_texture = ExtResource("1_6ofwt")
+metallic = 1.0
+roughness_texture = ExtResource("4_c5k3w")
+normal_enabled = true
+normal_scale = 1.65
+normal_texture = ExtResource("3_kfwly")
+heightmap_enabled = true
+heightmap_texture = ExtResource("2_llhrr")
+uv1_scale = Vector3(0.3, 0.3, 0.3)
+uv1_triplanar = true

@@ -16,7 +16,7 @@ func _ready():
 	var sphere_shape = SphereShape3D.new()
 	sphere_shape.radius = 0.5
 	
-	for i in range(200):
+	for i in range(100):
 		
 		var materialTest = StandardMaterial3D.new()
 		materialTest.albedo_color = Color(randf(), randf(), randf())
@@ -41,10 +41,12 @@ func _ready():
 		
 		rigid_body.set_collision_layer_value(1, false)
 		rigid_body.set_collision_layer_value(4, true)
+		rigid_body.set_collision_mask_value(1, true)
 		rigid_body.set_collision_mask_value(2, true)
+		rigid_body.set_collision_mask_value(3, true)
 		rigid_body.set_collision_mask_value(4, true)
 		
-		rigid_body.mass = 0.2
+		rigid_body.mass = 0.1
 		
 		root.add_child(rigid_body)
 		
@@ -62,6 +64,16 @@ func _ready():
 	
 #	if not error:
 #		print("Saving scene: " + scene_path)
+	
+	
+	
+	#MUSIC
+	#MusicManager.loaded.connect(on_music_manager_loaded)
+	GlobalMusicPlayer.load_track("Overworld1")
+
+
+
+
 
 func _input(event):
 	if event is InputEventKey and event.pressed and event.keycode == KEY_ESCAPE:

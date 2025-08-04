@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://pkvwthu3q36d"
+path="res://.godot/imported/Medieval - Angry Birds.mp3-30fd488f5e4a26483982015063da2301.mp3str"
+
+[deps]
+
+source_file="res://music/Medieval - Angry Birds.mp3"
+dest_files=["res://.godot/imported/Medieval - Angry Birds.mp3-30fd488f5e4a26483982015063da2301.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://7fs4efuymih0"
+path="res://.godot/imported/Medieval - Aquatic Ambience.mp3-8c795e85ce7f25952d5ce9ef2c722afe.mp3str"
+
+[deps]
+
+source_file="res://music/Medieval - Aquatic Ambience.mp3"
+dest_files=["res://.godot/imported/Medieval - Aquatic Ambience.mp3-8c795e85ce7f25952d5ce9ef2c722afe.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

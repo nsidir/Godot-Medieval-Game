@@ -1,0 +1,30 @@
+{
+	"tracks": [
+		{
+			"name": "Regal",
+			"stream": [
+				"regal1.ogg",
+				"regal2.ogg"
+			]
+		},
+		{
+			"name": "Hell",
+			"stream": [
+				"hell1.ogg",
+				"hell2.ogg"
+			]
+		},
+		{
+			"name": "Overworld1",
+			"stream": [
+				"Medieval - SUPER MARIO BROS.mp3"
+			]
+		},
+		{
+			"name": "Overworld2",
+			"stream": [
+				"Medieval - SUPER MARIO BROS.mp3"
+			]
+		}
+	]
+}

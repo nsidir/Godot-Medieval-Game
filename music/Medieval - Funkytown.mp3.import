@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://s66dhcqeul02"
+path="res://.godot/imported/Medieval - Funkytown.mp3-13456553f97aade28e2e1a977dad1386.mp3str"
+
+[deps]
+
+source_file="res://music/Medieval - Funkytown.mp3"
+dest_files=["res://.godot/imported/Medieval - Funkytown.mp3-13456553f97aade28e2e1a977dad1386.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

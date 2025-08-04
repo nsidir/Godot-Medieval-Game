@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cvx0o0tbu6a4h"
+path="res://.godot/imported/Medieval - SUPER MARIO BROS.mp3-b3333afda133b6555e254c36ce37570d.mp3str"
+
+[deps]
+
+source_file="res://music/Medieval - SUPER MARIO BROS.mp3"
+dest_files=["res://.godot/imported/Medieval - SUPER MARIO BROS.mp3-b3333afda133b6555e254c36ce37570d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
